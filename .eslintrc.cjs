@@ -2,7 +2,7 @@ module.exports = {
 	root: true,
 	extends: ['eslint:recommended', 'eslint-config-prettier'],
 	plugins: ['svelte3'],
-	ignorePatterns: ['*.cjs', 'public/fontawesome-free-5.11.2-web/**'],
+	ignorePatterns: ['*.cjs', 'public/fontawesome-free-5.11.2-web/**', 'public/build/**'],
 	overrides: [{ files: ['*.svelte'], processor: 'svelte3/svelte3', plugins: ['svelte3'] }],
 	parserOptions: {
 		sourceType: 'module',
