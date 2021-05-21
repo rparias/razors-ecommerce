@@ -5,6 +5,8 @@
 	<div class="products-center">
 		{#each $products as product (product.id)}
 			<Product {product} />
+		{:else}
+			<Loading />
 		{/each}
 	</div>
 </section>
@@ -12,6 +14,7 @@
 <script>
 	import products from '../../stores/defaultProducts';
 	import Product from './Product.svelte';
+	import Loading from '../Loading.svelte';
 
 	let title = '';
 
