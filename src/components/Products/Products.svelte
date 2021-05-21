@@ -1,22 +1,10 @@
 <h1>hello from products component</h1>
-{#each localProducts as product}
+<!-- using $ on products will subscribe and unsubscribe when component is loaded and destroyed -->
+<!-- with $ we do not have access to set, update and subscribe methods, but we have the objects on products -->
+{#each $products as product}
 	<h2>{product.title}</h2>
 {/each}
 
 <script>
-	import { onMount, onDestroy } from 'svelte';
 	import products from '../../stores/defaultProducts';
-
-	let localProducts = [];
-	let unsubscribe;
-
-	onMount(() => {
-		unsubscribe = products.subscribe((value) => {
-			localProducts = value;
-		});
-	});
-
-	onDestroy(() => {
-		unsubscribe();
-	});
 </script>
