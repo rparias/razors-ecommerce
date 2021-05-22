@@ -1,9 +1,5 @@
 <Router>
-	<nav class="navbar">
-		<Link to="/">Home</Link>
-		<Link to="/about">About</Link>
-		<Link to="/products">Products</Link>
-	</nav>
+	<Navbar />
 	<Route path="/" component={Home} />
 	<Route path="/about" component={About} />
 	<Route path="/login" component={Login} />
@@ -24,5 +20,7 @@
 	import ProductTemplate from './pages/ProductTemplate.svelte';
 	import Products from './pages/Products.svelte';
 	// routes
-	import { Router, Link, Route } from 'svelte-routing';
+	import { Router, Route } from 'svelte-routing';
+	// components
+	import Navbar from './components/Navbar/Navbar.svelte';
 </script>
