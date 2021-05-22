@@ -1,5 +1,6 @@
 <Router>
 	<Navbar />
+	<Sidebar />
 	<Route path="/" component={Home} />
 	<Route path="/about" component={About} />
 	<Route path="/login" component={Login} />
@@ -23,4 +24,5 @@
 	import { Router, Route } from 'svelte-routing';
 	// components
 	import Navbar from './components/Navbar/Navbar.svelte';
+	import Sidebar from './components/Navbar/Sidebar.svelte';
 </script>
