@@ -1,6 +1,6 @@
 <Router>
 	<Navbar />
-	{#if globalStore.sidebar}
+	{#if $globalStore.sidebar}
 		<Sidebar />
 	{/if}
 	<Route path="/" component={Home} />
