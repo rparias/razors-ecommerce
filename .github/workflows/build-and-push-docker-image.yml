@@ -25,6 +25,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: rparias/razors:${{ env.GITHUB_REF#refs/tags/ }},rparias/razors:latest
+          tags: rparias/razors:$GITHUB_REF/refs\/tags\//,rparias/razors:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
