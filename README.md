@@ -2,8 +2,6 @@
 
 This is a project used to learn svelte. Available to run locally using npm or Docker.
 
-````
-
 _Note that you will need to have [Node.js](https://nodejs.org) installed or [Docker](https://docker.com)_
 
 ## Get started
@@ -15,7 +13,7 @@ Install the dependencies...
 ```bash
 cd razors-ecommernce
 npm install
-````
+```
 
 ...then start:
 
