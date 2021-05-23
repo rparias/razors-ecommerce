@@ -18,7 +18,7 @@
 				<button
 					class="btn btn-primary btn-block"
 					on:click={() => {
-						console.log('clicked add to cart');
+						globalStore.toggleItem('cart', true);
 					}}>add to cart</button
 				>
 			</article>
@@ -30,6 +30,7 @@
 	import { link } from 'svelte-routing';
 	import Loading from '../components/Loading.svelte';
 	import products from '../stores/defaultProducts';
+	import globalStore from '../stores/globalStore';
 
 	let id;
 
