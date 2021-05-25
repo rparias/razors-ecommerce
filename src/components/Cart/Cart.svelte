@@ -11,7 +11,7 @@
 				<h2 class="cart-title">your bag</h2>
 				<span />
 			</div>
-			<p>cart items</p>
+			<ItemsList />
 			<div class="cart-footer">
 				{#if user}
 					<a
@@ -42,6 +42,6 @@
 	import globalStore from '../../stores/globalStore';
 	import { fly, fade, blur } from 'svelte/transition';
 	import { link } from 'svelte-routing';
-
+	import ItemsList from './ItemsList.svelte';
 	let user = false;
 </script>
