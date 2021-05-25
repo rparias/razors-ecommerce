@@ -6,7 +6,7 @@
 		<button
 			class="cart-btn remove-btn"
 			on:click={() => {
-				console.log('remove item');
+				removeItem(id);
 			}}>remove</button
 		>
 	</div>
@@ -32,6 +32,8 @@
 </div>
 
 <script>
+	import { removeItem } from '../../stores/cart';
+
 	let amount;
 	let id;
 	let image;
