@@ -47,6 +47,19 @@ export const increaseAmount = (id) => {
 		return toggleAmount(id, storeValue, 'INCREASE');
 	});
 };
+
+export const decreaseAmount = (id) => {
+	storeCart.update((storeValue) => {
+		let item = storeValue.find((item) => item.id === id);
+		let cart;
+		if (item.amount === 1) {
+			cart = removeItem(id);
+		} else {
+			cart = toggleAmount(id, storeValue, 'DECREASE');
+		}
+		return [...cart];
+	});
+};
 // localStorage
 
 export default storeCart;

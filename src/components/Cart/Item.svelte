@@ -23,7 +23,7 @@
 		<button
 			class="cart-btn amount-btn"
 			on:click={() => {
-				console.log('decrease item');
+				decreaseAmount(id);
 			}}
 		>
 			<i class="fas fa-chevron-down" />
@@ -32,7 +32,7 @@
 </div>
 
 <script>
-	import { removeItem, increaseAmount } from '../../stores/cart';
+	import { removeItem, increaseAmount, decreaseAmount } from '../../stores/cart';
 
 	let amount;
 	let id;
