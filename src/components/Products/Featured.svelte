@@ -15,7 +15,7 @@
 {/if}
 
 <script>
-	import { featuredStore } from '../../stores/defaultProducts';
+	import { featuredStore } from '../../stores/products';
 	import Product from './Product.svelte';
 	import Loading from '../Loading.svelte';
 

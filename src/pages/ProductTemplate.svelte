@@ -31,7 +31,7 @@
 	import { link } from 'svelte-routing';
 	import { addToCart } from '../stores/cart';
 	import Loading from '../components/Loading.svelte';
-	import products from '../stores/defaultProducts';
+	import products from '../stores/products';
 	import globalStore from '../stores/globalStore';
 
 	let id;
