@@ -60,6 +60,21 @@ export const decreaseAmount = (id) => {
 		return [...cart];
 	});
 };
+
+export const addToCart = (product) => {
+	storeCart.update((storeValue) => {
+		const { id } = product;
+		let item = storeValue.find((item) => item.id === id);
+		let cart;
+		if (item) {
+			cart = toggleAmount(id, storeValue, 'INCREASE');
+		} else {
+			let newItem = { ...product, amount: 1 };
+			cart = [...storeValue, newItem];
+		}
+		return cart;
+	});
+};
 // localStorage
 
 export default storeCart;
