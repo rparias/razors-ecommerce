@@ -13,7 +13,7 @@
 			</div>
 			<ItemsList />
 			<div class="cart-footer">
-				{#if user}
+				{#if $storeUser.jwt}
 					<a
 						href="/checkout"
 						use:link
@@ -40,8 +40,8 @@
 
 <script>
 	import globalStore from '../../stores/globalStore';
+	import storeUser from '../../stores/storeUser';
 	import { fly, fade, blur } from 'svelte/transition';
 	import { link } from 'svelte-routing';
 	import ItemsList from './ItemsList.svelte';
-	let user = false;
 </script>
