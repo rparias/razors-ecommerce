@@ -21,13 +21,15 @@
 					>
 				</li>
 			{/each}
+			<li><LoginLink /></li>
 		</ul>
 	</div>
 </div>
 
 <script>
+	import { fly, fade } from 'svelte/transition';
 	import { link } from 'svelte-routing';
 	import links from '../../constants/links';
 	import globalStore from '../../stores/globalStore';
-	import { fly, fade } from 'svelte/transition';
+	import LoginLink from '../../components/LoginLink.svelte';
 </script>
