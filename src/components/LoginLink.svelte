@@ -3,6 +3,7 @@
 		href="/"
 		class="logout-btn"
 		on:click={() => {
+			logout();
 			globalStore.toggleItem('sidebar', false);
 		}}>logout</a
 	>
@@ -19,6 +20,7 @@
 
 <script>
 	import { link } from 'svelte-routing';
+	import { logout } from '../stores/storeUser';
 	import storeUser from '../stores/storeUser';
 	import globalStore from '../stores/globalStore';
 </script>

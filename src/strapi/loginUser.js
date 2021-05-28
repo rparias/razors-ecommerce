@@ -1,5 +1,6 @@
 import axios from 'axios';
 import BASE_URL from './URL';
+import setupUser from './setupUser';
 
 async function loginUser({ email, password }) {
 	const response = await axios
@@ -9,7 +10,7 @@ async function loginUser({ email, password }) {
 		});
 
 	if (response) {
-		// setup user
+		setupUser(response);
 	}
 
 	return response;

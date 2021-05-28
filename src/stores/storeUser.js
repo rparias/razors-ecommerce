@@ -16,4 +16,9 @@ export function setUser(user) {
 	storeUser.set(user);
 }
 
+export function logout() {
+	localStorage.clear();
+	storeUser.set({ username: null, jwt: null });
+}
+
 export default storeUser;
