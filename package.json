@@ -36,6 +36,7 @@
 		"svelte-jester": "^1.5.0"
 	},
 	"dependencies": {
+		"axios": "^0.21.1",
 		"sirv-cli": "^1.0.0",
 		"svelte-routing": "^1.6.0"
 	},
