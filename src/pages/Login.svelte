@@ -48,6 +48,7 @@
 	import { navigate } from 'svelte-routing';
 	import loginUser from '../strapi/loginUser';
 	import registerUser from '../strapi/registerUser';
+	import globalStore from '../stores/globalStore';
 
 	let email = '';
 	let password = '';
@@ -70,6 +71,9 @@
 		}
 		if (user) {
 			navigate('/products');
+			globalStore.toggleItem('alert', true, 'Welcome to shopping madness!');
+			return;
 		}
+		globalStore.toggleItem('alert', true, 'There was an error, please try again', true);
 	}
 </script>
