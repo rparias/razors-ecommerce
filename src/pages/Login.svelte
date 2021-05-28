@@ -61,10 +61,12 @@
 	}
 
 	async function handleSubmit() {
+		let user;
 		if (isMember) {
 			loginUser();
 		} else {
-			registerUser();
+			user = await registerUser({ email, password, username });
 		}
+		console.log(user);
 	}
 </script>
