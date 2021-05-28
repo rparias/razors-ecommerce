@@ -45,6 +45,7 @@
 </section>
 
 <script>
+	import { navigate } from 'svelte-routing';
 	import loginUser from '../strapi/loginUser';
 	import registerUser from '../strapi/registerUser';
 
@@ -67,6 +68,8 @@
 		} else {
 			user = await registerUser({ email, password, username });
 		}
-		console.log(user);
+		if (user) {
+			navigate('/products');
+		}
 	}
 </script>
