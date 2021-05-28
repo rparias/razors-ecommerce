@@ -6,7 +6,7 @@
 			register
 		{/if}
 	</h2>
-	<form class="login-form" on:submit|preventDefault={handleSubmit()}>
+	<form class="login-form" on:submit|preventDefault={handleSubmit}>
 		<div class="form-control">
 			<label for="email">email</label>
 			<input id="email" type="email" bind:value={email} />
@@ -33,18 +33,21 @@
 		{#if isMember}
 			<p class="register-link">
 				need to register?
-				<button type="button" on:click={toggleMember()}>click here</button>
+				<button type="button" on:click={toggleMember}>click here</button>
 			</p>
 		{:else}
 			<p class="register-link">
 				already a member?
-				<button type="button" on:click={toggleMember()}>click here</button>
+				<button type="button" on:click={toggleMember}>click here</button>
 			</p>
 		{/if}
 	</form>
 </section>
 
 <script>
+	import loginUser from '../strapi/loginUser';
+	import registerUser from '../strapi/registerUser';
+
 	let email = '';
 	let password = '';
 	let username = 'default username';
@@ -52,7 +55,16 @@
 
 	$: isEmpty = !email || !password || !username;
 
-	function toggleMember() {}
+	function toggleMember() {
+		isMember = !isMember;
+		username = !isMember ? '' : 'default username';
+	}
 
-	async function handleSubmit() {}
+	async function handleSubmit() {
+		if (isMember) {
+			loginUser();
+		} else {
+			registerUser();
+		}
+	}
 </script>
