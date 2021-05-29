@@ -55,7 +55,7 @@
 	let username = 'default username';
 	let isMember = true;
 
-	$: isEmpty = !email || !password || !username;
+	$: isEmpty = !email || !password || !username || $globalStore.alert;
 
 	function toggleMember() {
 		isMember = !isMember;
@@ -63,6 +63,7 @@
 	}
 
 	async function handleSubmit() {
+		globalStore.toggleItem('alert', true, 'loading data... please wait');
 		let user;
 		if (isMember) {
 			user = await loginUser({ email, password });
