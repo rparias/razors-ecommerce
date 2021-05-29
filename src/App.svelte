@@ -14,7 +14,7 @@
 	<Route path="/login" component={Login} />
 	<Route path="/products" component={Products} />
 	<Route path="/products/:id" component={ProductTemplate} />
-	<Route path="/checkoout" component={Checkout} />
+	<Route path="/checkout" component={Checkout} />
 </Router>
 
 <style>
