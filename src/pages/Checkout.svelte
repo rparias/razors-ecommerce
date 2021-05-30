@@ -64,6 +64,12 @@
 			navigate('/');
 			return;
 		}
+		if ($storeCartTotal > 0) {
+			setupStripe();
+		}
+	});
+
+	function setupStripe() {
 		/* global Stripe */
 		stripe = Stripe(
 			'pk_test_51IwHigFe2EQrzciohDP2LUIG4mgLNGxXW5QNIaEkKXWigj8fUWTIUqHaC2AjEhMMzXUajVLscriW1ph1XRNVgjj200XskSVTfi'
@@ -78,17 +84,16 @@
 				cardErrors.textContent = '';
 			}
 		});
-	});
+	}
 
 	async function handleSubmit() {
 		let response = await stripe.createToken(card).catch((error) => console.error(error));
 		const { token } = response;
 		if (token) {
-			console.log(response);
 			// token.id
 			// submit order
 		} else {
-			console.log(response);
+			// error on token
 		}
 	}
 </script>
