@@ -45,8 +45,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import { navigate, link } from 'svelte-routing';
-	import { storeCartTotal } from '../stores/cart';
+	import storeCart, { storeCartTotal } from '../stores/cart';
 	import storeUser from '../stores/storeUser';
+	import submitOrder from '../strapi/submitOrder';
 
 	let name = '';
 
@@ -90,8 +91,15 @@
 		let response = await stripe.createToken(card).catch((error) => console.error(error));
 		const { token } = response;
 		if (token) {
-			// token.id
-			// submit order
+			const { id } = token;
+			let order = await submitOrder({
+				name,
+				total: $storeCartTotal,
+				items: $storeCart,
+				stripeTokenId: id,
+				userToken: $storeUser.jwt
+			});
+			console.log(order);
 		} else {
 			// error on token
 		}
