@@ -51,18 +51,33 @@
 	let name = '';
 
 	// stripe vars
-	// let card;
+	let card;
 	let cardElement;
 	let cardErrors;
-	// let elements;
-	// let stripe;
+	let elements;
+	let stripe;
 
 	$: isEmpty = !name;
 
 	onMount(() => {
 		if (!$storeUser.jwt) {
 			navigate('/');
+			return;
 		}
+		/* global Stripe */
+		stripe = Stripe(
+			'pk_test_51IwHigFe2EQrzciohDP2LUIG4mgLNGxXW5QNIaEkKXWigj8fUWTIUqHaC2AjEhMMzXUajVLscriW1ph1XRNVgjj200XskSVTfi'
+		);
+		elements = stripe.elements();
+		card = elements.create('card');
+		card.mount(cardElement);
+		card.addEventListener('change', function (event) {
+			if (event.error) {
+				cardErrors.textContent = event.error.message;
+			} else {
+				cardErrors.textContent = '';
+			}
+		});
 	});
 
 	function handleSubmit() {
