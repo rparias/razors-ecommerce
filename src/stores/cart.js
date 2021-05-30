@@ -10,7 +10,7 @@ export const storeCartTotal = derived(storeCart, ($storeCart) => {
 		return (acc += current.amount * current.price);
 	}, 0);
 
-	return total.toFixed(2);
+	return parseFloat(total.toFixed(2));
 });
 
 // local functions

@@ -47,6 +47,7 @@
 	import { navigate, link } from 'svelte-routing';
 	import storeCart, { storeCartTotal } from '../stores/cart';
 	import storeUser from '../stores/storeUser';
+	import globalStore from '../stores/globalStore';
 	import submitOrder from '../strapi/submitOrder';
 
 	let name = '';
@@ -58,7 +59,7 @@
 	let elements;
 	let stripe;
 
-	$: isEmpty = !name;
+	$: isEmpty = !name || $globalStore.alert;
 
 	onMount(() => {
 		if (!$storeUser.jwt) {
@@ -88,6 +89,7 @@
 	}
 
 	async function handleSubmit() {
+		globalStore.toggleItem('alert', true, 'submitting order... please wait');
 		let response = await stripe.createToken(card).catch((error) => console.error(error));
 		const { token } = response;
 		if (token) {
@@ -99,7 +101,20 @@
 				stripeTokenId: id,
 				userToken: $storeUser.jwt
 			});
-			console.log(order);
+			if (order) {
+				globalStore.toggleItem('alert', true, 'your order is complete!');
+				storeCart.set([]);
+				localStorage.setItem('cart', JSON.stringify([]));
+				navigate('/');
+				return;
+			} else {
+				globalStore.toggleItem(
+					'alert',
+					true,
+					'there was an error with your order, please try again',
+					true
+				);
+			}
 		} else {
 			// error on token
 		}
