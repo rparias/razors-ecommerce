@@ -80,7 +80,15 @@
 		});
 	});
 
-	function handleSubmit() {
-		console.log('form submitted');
+	async function handleSubmit() {
+		let response = await stripe.createToken(card).catch((error) => console.error(error));
+		const { token } = response;
+		if (token) {
+			console.log(response);
+			// token.id
+			// submit order
+		} else {
+			console.log(response);
+		}
 	}
 </script>
